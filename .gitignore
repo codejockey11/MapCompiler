@@ -1,0 +1,11 @@
+.vs/*
+MapCompiler/*
+x64/*
+*.exe
+*.dll
+*.txt
+*.env
+*.mtl
+*.log
+*.blend
+*.obj

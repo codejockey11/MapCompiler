@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MapCompiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CDebugLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CLine3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CShaderMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CToken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDebugLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CLine3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CShaderMaterial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="terrain.obj">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="terrain.mtl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="box.obj">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="box.mtl">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CBmpImage.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CColor.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CComError.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CDXGIError.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CDXGIErrorItem.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CErrorLog.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CHeapAllocator.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CHeapArray.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CLinkList.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CLinkListNode.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CNetwork.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CString.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CTgaImage.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVec2f.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVec3f.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertex2.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertex2D.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertexNT.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertexRGBA.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertexT.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CWinsockError.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CWinsockErrorItem.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CXAudio2Error.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Debug\CXAudio2ErrorItem.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="debugLog.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
