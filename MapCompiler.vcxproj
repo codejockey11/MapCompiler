@@ -74,6 +74,10 @@
     <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;C:\Program Files\MySQL\MySQL Server 8.0\include;C:\Users\junk_\source\repos\vcpkg-master\buildtrees\curl\src\url-7_86_0-3d3d4aefd3.clean\include</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;C:\Program Files\MySQL\Connector C++ 8.0\lib64\vs14;C:\Program Files\MySQL\MySQL Server 8.0\lib;C:\Users\junk_\source\repos\vcpkg-master\buildtrees\curl\x64-windows-rel\lib</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Program Files\MySQL\MySQL Server 8.0\include;C:\Users\junk_\source\repos\vcpkg-master\buildtrees\curl\src\url-7_86_0-3d3d4aefd3.clean\include</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;C:\Program Files\MySQL\Connector C++ 8.0\lib64\vs14;C:\Program Files\MySQL\MySQL Server 8.0\lib;C:\Users\junk_\source\repos\vcpkg-master\buildtrees\curl\x64-windows-rel\lib</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -154,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="box.mtl" />
-    <None Include="terrain.mtl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="box.obj">
@@ -162,35 +165,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="terrain.obj">
-      <FileType>Document</FileType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CBmpImage.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CColor.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CComError.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CDXGIError.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CDXGIErrorItem.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CErrorLog.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CHeapAllocator.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CHeapArray.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CLinkList.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CLinkListNode.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CNetwork.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CString.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CTgaImage.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVec2f.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVec3f.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertex2.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertex2D.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertexNT.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertexRGBA.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CVertexT.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CWinsockError.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CWinsockErrorItem.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CXAudio2Error.obj" />
-    <Object Include="..\GameCommon\GameCommon\x64\Debug\CXAudio2ErrorItem.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CBmpImage.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CColor.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CComError.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CDirectoryList.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CDXGIError.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CDXGIErrorItem.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CErrorLog.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CHeapAllocator.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CHeapArray.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CLinkList.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CLinkListNode.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CString.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CTgaImage.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CVec2f.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CVec3f.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CVertex2.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CVertex2D.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CVertexNT.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CVertexRGBA.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CVertexT.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CWinsockError.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CWinsockErrorItem.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CXAudio2Error.obj" />
+    <Object Include="..\GameCommon\GameCommon\x64\Release\CXAudio2ErrorItem.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

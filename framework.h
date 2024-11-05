@@ -90,6 +90,6 @@ using namespace DirectX;
 
 #define MAX_STRING 256
 #define MAX_SHADER 256
-#define MAX_VERTEX 500000
-#define MAX_NORMAL 500000
-#define MAX_UV 500000
+#define MAX_VERTEX 5000000
+#define MAX_NORMAL 5000000
+#define MAX_UV 5000000

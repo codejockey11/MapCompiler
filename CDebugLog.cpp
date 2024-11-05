@@ -14,9 +14,6 @@ CDebugLog::~CDebugLog()
 
 void CDebugLog::Write(const char* format, ...)
 {
-#ifndef _DEBUG
-	return;
-#endif
 	if (strlen(format) == 0)
 	{
 		return;
@@ -31,10 +28,6 @@ void CDebugLog::Write(const char* format, ...)
 	vsprintf_s(m_text, MAX_STRING, format, argptr);
 
 	va_end(argptr);
-
-#ifdef _DEBUG
-	//OutputDebugStringA(m_text);
-#endif
 
 	fwrite(m_text, strlen(m_text), 1, m_file);
 }

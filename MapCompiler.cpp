@@ -1,12 +1,15 @@
 #include "framework.h"
 
-#include "CDebugLog.h"
 #include "CShaderMaterial.h"
 #include "../GameCommon/CString.h"
 #include "CToken.h"
 #include "../GameCommon/CVec3f.h"
 
+#include "CDebugLog.h"
 CDebugLog m_debugLog;
+
+FILE* m_fMap;
+FILE* m_fCollision;
 
 char m_filename[MAX_STRING];
 char* m_materialFilename;
@@ -174,7 +177,11 @@ void ProcessObjectScript()
 			m_objectScript.Move(2);
 
 			m_vertex[m_vertexCount].p.x = (float)atof(m_objectScript.GetToken());
+
+			// export belnder model as Z -Y
 			m_vertex[m_vertexCount].p.y = (float)atof(m_objectScript.GetToken());
+			m_vertex[m_vertexCount].p.y *= -1.0f;
+
 			m_vertex[m_vertexCount].p.z = (float)atof(m_objectScript.GetToken());
 
 			m_vertexCount++;
@@ -211,6 +218,10 @@ void ProcessObjectScript()
 			m_objectScript.SkipEndOfLine();
 		}
 
+		printf("m_vertexCount:%i\r\n", m_vertexCount);
+		printf("m_normalCount:%i\r\n", m_normalCount);
+		printf("m_uvCount:%i\r\n", m_uvCount);
+
 		m_objectScript.MoveToToken("usemtl");
 
 		while (strncmp(m_objectScript.m_buffer, "usemtl ", 7) == 0)
@@ -238,6 +249,8 @@ void ProcessObjectScript()
 
 			m_objectScript.MoveToToken("f");
 
+			int faceCount = 0;
+
 			while (strncmp(m_objectScript.m_buffer, "f ", 2) == 0)
 			{
 				m_objectScript.Move(2);
@@ -260,6 +273,41 @@ void ProcessObjectScript()
 					);
 				}
 
+				for (int p = 0; p < 3; p++)
+				{
+					float x = m_u[uv[p]] * mat->m_x;
+					float y = m_v[uv[p]] * mat->m_y;
+
+					fwrite(&m_vertex[vertex[p]].p.x, sizeof(float), 1, m_fMap);
+					fwrite(&m_vertex[vertex[p]].p.y, sizeof(float), 1, m_fMap);
+					fwrite(&m_vertex[vertex[p]].p.z, sizeof(float), 1, m_fMap);
+					
+					fwrite(&m_normal[normal[p]].p.x, sizeof(float), 1, m_fMap);
+					fwrite(&m_normal[normal[p]].p.y, sizeof(float), 1, m_fMap);
+					fwrite(&m_normal[normal[p]].p.z, sizeof(float), 1, m_fMap);
+					
+					fwrite(&x, sizeof(float), 1, m_fMap);
+					fwrite(&y, sizeof(float), 1, m_fMap);
+
+					m_debugLog.Write("%+012.7f %+012.7f %+012.7f ", m_vertex[vertex[p]].p.x, m_vertex[vertex[p]].p.y, m_vertex[vertex[p]].p.z);
+
+					fwrite(&m_vertex[vertex[p]].p.x, sizeof(float), 1, m_fCollision);
+					fwrite(&m_vertex[vertex[p]].p.y, sizeof(float), 1, m_fCollision);
+					fwrite(&m_vertex[vertex[p]].p.z, sizeof(float), 1, m_fCollision);
+				}
+
+				CVec3f n = m_vertex[vertex[0]].Normal(&m_vertex[vertex[0]], &m_vertex[vertex[1]], &m_vertex[vertex[2]]);
+
+				m_debugLog.Write("%+012.7f %+012.7f %+012.7f\r\n", n.p.x, n.p.y, n.p.z);
+
+				fwrite(&n.p.x, sizeof(float), 1, m_fCollision);
+				fwrite(&n.p.y, sizeof(float), 1, m_fCollision);
+				fwrite(&n.p.z, sizeof(float), 1, m_fCollision);
+
+				printf("%i\r", faceCount);
+
+				faceCount++;
+
 				m_objectScript.SkipEndOfLine();
 			}
 		}
@@ -271,9 +319,33 @@ int main(int argc, char* argv[])
 	if (argc == 0)
 	{
 		m_debugLog.Write("Specify an environment name\r\n");
-
+	
 		return 0;
 	}
+
+	errno_t err = fopen_s(&m_fMap, "map.txt", "wb");
+
+	if (m_fMap == 0)
+	{
+		return 0;
+	}
+	
+	int s = 256;
+
+	fwrite(&s, sizeof(int), 1, m_fMap);
+	fwrite(&s, sizeof(int), 1, m_fMap);
+	fwrite(&s, sizeof(int), 1, m_fMap);
+
+	err = fopen_s(&m_fCollision, "collision.txt", "wb");
+
+	if (m_fCollision == 0)
+	{
+		return 0;
+	}
+
+	fwrite(&s, sizeof(int), 1, m_fCollision);
+	fwrite(&s, sizeof(int), 1, m_fCollision);
+	fwrite(&s, sizeof(int), 1, m_fCollision);
 
 	memset(m_filename, 0x00, MAX_STRING);
 	memcpy(m_filename, argv[1], strlen(argv[1]));
@@ -299,6 +371,9 @@ int main(int argc, char* argv[])
 	}
 
 	ProcessObjectScript();
+
+	fclose(m_fCollision);
+	fclose(m_fMap);
 
 	return 1;
 }
